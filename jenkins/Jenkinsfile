@@ -36,4 +36,12 @@ node {
         //     junit 'test-reports/results.xml'
         // }
     }
+
+    docker.image('qnib/pytest').inside {
+        stage('Test') {
+            checkout scm
+            sh 'py.test --verbose --junit-xml test-reports/results.xml test_calc.py'
+            junit 'test-reports/results.xml'
+        }
+    }
 }
