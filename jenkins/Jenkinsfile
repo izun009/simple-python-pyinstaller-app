@@ -1,23 +1,39 @@
-node {
-    stage('Build') {
-        node {
-            docker.image('python:3-alpine').inside {
-                sh 'python -m py_compile add2vals.py calc.py'
-            }
-        }
-    }
+// node {
+//     stage('Build') {
+//         node {
+//             docker.image('python:3-alpine').inside {
+//                 checkout scm
+//                 sh 'python -m py_compile add2vals.py calc.py'
+//             }
+//         }
+//     }
     
-    stage('Test') {
-        node {
-            docker.image('qnib/pytest').inside {
-                sh 'py.test --verbose --junit-xml test-reports/results.xml test_calc.py'
-            }
-        }
+//     stage('Test') {
+//         node {
+//             docker.image('qnib/pytest').inside {
+//                 checkout scm
+//                 sh 'py.test --verbose --junit-xml test-reports/results.xml test_calc.py'
+//             }
+//         }
         
-        try {
-            junit 'test-reports/results.xml'
-        } catch (Exception e) {
-            // Handle any error or failure during test execution
+//         try {
+//             junit 'test-reports/results.xml'
+//         } catch (Exception e) {
+//             // Handle any error or failure during test execution
+//         }
+//     }
+// }
+
+node {
+    docker.image('python:3-alpine').inside {
+        stage('Build') {
+            checkout scm
+            sh 'python -m py_compile sources/add2vals.py sources/calc.py'
         }
+        // stage('Test') {
+        //     checkout scm
+        //     sh 'py.test --verbose --junit-xml test-reports/results.xml test_calc.py'
+        //     junit 'test-reports/results.xml'
+        // }
     }
 }
