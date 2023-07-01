@@ -16,11 +16,6 @@ node {
             }
         }
         
-        try {
-            junit 'test-reports/results.xml'
-        } catch (Exception e) {
-            // Handle any error or failure during test execution
-        }
     }
 }
 
