@@ -1,24 +1,3 @@
-// node {
-//     stage('Build') {
-//         node {
-//             docker.image('python:3-alpine').inside {
-//                 checkout scm
-//                 sh 'python -m py_compile add2vals.py calc.py'
-//             }
-//         }
-//     }
-    
-//     stage('Test') {
-//         node {
-//             docker.image('qnib/pytest').inside {
-//                 checkout scm
-//                 sh 'py.test --verbose --junit-xml test-reports/results.xml test_calc.py'
-//             }
-//         }
-        
-//     }
-// }
-
 node {
     docker.image('python:3-alpine').inside {
         stage('Build') {
