@@ -47,6 +47,7 @@ pipeline {
                 success {
                     archiveArtifacts "${env.BUILD_ID}/sources/dist/add2vals"
                     sh "echo 'Mission Complete ....................'" 
+                    sh "echo 'Beasiswa Dicoding Indonesia ____________'" 
                     sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
                 }
             }
