@@ -34,9 +34,9 @@ pipeline {
             input {
                 message "Apakah ingin melanjutkan ke proses deployment ?"
             }
-            post {
+            steps {
                 success {
-                    echo "Deployment Successful !"
+                    sh "Deployment Successful !"
                 }
                 failure {
                     echo "Deployment Aborted !"
