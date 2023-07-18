@@ -35,12 +35,7 @@ pipeline {
                 message "Apakah ingin melanjutkan ke proses deployment ?"
             }
             steps {
-                success {
-                    sh "echo 'Deployment Successful !'"
-                }
-                failure {
-                    sh "echo 'Deployment Aborted !'"
-                }
+                sh "echo 'Deployment Successful !'"
             }
         }
         stage('Deliver') { 
