@@ -32,17 +32,23 @@ pipeline {
         }
         stage('Approval for Deployment'){
             input {
-	            message 'Please select environment'
-	            id 'envId'
-	            ok 'Submit'
-	            submitterParameter 'approverId'
-	            parameters {
-	                choice choices: ['Prod', 'Pre-Prod'], name: 'envType'
-	            }
+                message "Apakah ingin melanjutkan ke proses deployment ?"
             }
             steps {
-                echo "Deployment approved to ${envType} by ${approverId}"
+                sh "Deploy ke production"
             }
+            // input {
+	        //     message 'Please select environment'
+	        //     id 'envId'
+	        //     ok 'Deliver'
+	        //     submitterParameter 'approverId'
+	        //     parameters {
+	        //         choice choices: ['Prod', 'Pre-Prod'], name: 'envType'
+	        //     }
+            // }
+            // steps {
+            //     echo "Deployment approved to ${envType} by ${approverId}"
+            // }
         }
         stage('Deliver') { 
             agent any
