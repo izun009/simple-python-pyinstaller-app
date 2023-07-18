@@ -36,10 +36,10 @@ pipeline {
             }
             steps {
                 success {
-                    sh "Deployment Successful !"
+                    sh "echo 'Deployment Successful !'"
                 }
                 failure {
-                    echo "Deployment Aborted !"
+                    sh "echo 'Deployment Aborted !'"
                 }
             }
         }
