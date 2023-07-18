@@ -34,8 +34,13 @@ pipeline {
             input {
                 message "Apakah ingin melanjutkan ke proses deployment ?"
             }
-            steps {
-                sh "Deploy ke production"
+            post {
+                success {
+                    echo "Deployment Successful !"
+                }
+                failure {
+                    echo "Deployment Aborted !"
+                }
             }
             // input {
 	        //     message 'Please select environment'
