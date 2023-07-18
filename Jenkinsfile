@@ -42,18 +42,6 @@ pipeline {
                     echo "Deployment Aborted !"
                 }
             }
-            // input {
-	        //     message 'Please select environment'
-	        //     id 'envId'
-	        //     ok 'Deliver'
-	        //     submitterParameter 'approverId'
-	        //     parameters {
-	        //         choice choices: ['Prod', 'Pre-Prod'], name: 'envType'
-	        //     }
-            // }
-            // steps {
-            //     echo "Deployment approved to ${envType} by ${approverId}"
-            // }
         }
         stage('Deliver') { 
             agent any
