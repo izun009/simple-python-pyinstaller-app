@@ -31,6 +31,7 @@ pipeline {
             }
         }
         stage('Approval for Deployment'){
+            agent none
             input {
                 message "Apakah ingin melanjutkan ke proses deployment ?"
             }
