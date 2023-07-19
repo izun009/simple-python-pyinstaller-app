@@ -36,10 +36,10 @@ pipeline {
                 message "Apakah ingin melanjutkan ke proses deployment ?"
             }
             steps {
-                echo "Deployment Successful !"
+                echo "Deployment Approved !"
             }
         }
-        stage('Deliver') { 
+        stage('Deploy') { 
             agent any
             environment { 
                 VOLUME = '$(pwd)/sources:/src'
@@ -55,7 +55,7 @@ pipeline {
             post {
                 success {
                     archiveArtifacts "${env.BUILD_ID}/sources/dist/add2vals"
-                    sh "echo 'Mission Complete ....................'" 
+                    sh "echo 'Python App was Deployed !'" 
                     sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
                 }
             }
